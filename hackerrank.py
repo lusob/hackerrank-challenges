@@ -222,4 +222,30 @@ if __name__ == '__main__':
 	m = input()
 	print subpattern(s)
 
+# https://www.hackerrank.com/challenges/candies
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# this solution isn't passing all test cases
+#
+if __name__ == '__main__':
+    n = input()
+    ratings = []
+    total_candies_given = 1
+    last_candies_given = 1
+    for i in xrange(n):
+        ratings.append(input())
+    for i in xrange(n-1):
+        current = i
+        next = i+1
+        if ratings[current] >= ratings[next]:
+            last_candies_given = 1
+            while next < n and ratings[current] > ratings[next]:
+                last_candies_given += 1
+                current += 1
+                next +=1
+            total_candies_given += last_candies_given
+            last_candies_given = 0
+        else:
+            last_candies_given += 1
+        total_candies_given += last_candies_given
+    print total_candies_given
 
