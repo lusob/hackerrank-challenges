@@ -1,3 +1,4 @@
+'''
 # My solutions to hackerrank challenges,
 # paste every snippet on hackerrank web to solve it
 
@@ -248,4 +249,22 @@ if __name__ == '__main__':
             last_candies_given += 1
         total_candies_given += last_candies_given
     print total_candies_given
+'''
+
+# https://www.hackerrank.com/challenges/longest-increasing-subsequent
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__=='__main__':
+    n = input()
+    ratings = []
+    for i in xrange(n):
+        ratings.append(input())
+
+    def my_longest_increasing_subsequence(d):
+        l = []
+        for i in xrange(len(d)):
+            seqs = [l[j] for j in xrange(i) if d[i] > l[j][-1]] or [[]]
+            l.append(max(seqs, key=len) + [d[i]])
+        return max(l, key=len)
+
+    print len(my_longest_increasing_subsequence(ratings))
 
