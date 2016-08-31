@@ -21,3 +21,42 @@ if __name__ == '__main__':
   prices = map(int, raw_input().split())
   print max_toys(prices, k)
 
+# https://www.hackerrank.com/challenges/two-arrays
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def exist_permutation():
+    for i in xrange(n):
+        if A[i]+B[i]<k:
+            return 'NO'
+    return 'YES'
+
+if __name__ == '__main__':
+    T = input()
+    for i in xrange(T):
+        n, k = map(int, raw_input().split())
+        A = map(int, raw_input().split())
+        B = map(int, raw_input().split())
+        A.sort()
+        B.sort(reverse=True)
+        print exist_permutation()
+
+# https://www.hackerrank.com/challenges/sherlock-and-array
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def is_valid(N, A):
+    if N == 1:
+        return 'YES'
+    sum_left = 0
+    sum_right = sum(A) - A[0]
+    for i in xrange(1,N-1):
+        sum_left += A[i-1]
+        sum_right -= A[i]
+        if sum_left == sum_right:
+            return 'YES'
+    return 'NO'
+
+if __name__ == '__main__':
+    T = input()
+    for case in xrange(T):
+        N = int(raw_input())
+        A = map(int, raw_input().split())
+        print is_valid(N, A)
+
