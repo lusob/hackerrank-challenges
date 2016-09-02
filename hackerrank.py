@@ -60,3 +60,12 @@ if __name__ == '__main__':
         A = map(int, raw_input().split())
         print is_valid(N, A)
 
+# https://www.hackerrank.com/challenges/missing-numbers
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__ == '__main__':
+    from collections import Counter
+    N = input()
+    A = Counter(map(int, raw_input().split()))
+    M = input()
+    B = Counter(map(int, raw_input().split()))
+    print ' '.join(sorted(map(str,(B-A).keys())))
