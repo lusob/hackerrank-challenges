@@ -69,3 +69,22 @@ if __name__ == '__main__':
     M = input()
     B = Counter(map(int, raw_input().split()))
     print ' '.join(sorted(map(str,(B-A).keys())))
+
+# https://www.hackerrank.com/challenges/pairs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def pairs(n,k):
+    c = 0
+    for i in xrange(N):
+        for j in xrange(i+1,N):
+            diff = abs(n[i] - n[j])
+            if diff == k:
+                c += 1
+                break
+            elif diff > k:
+                break
+    return c
+if __name__ == '__main__':
+    N, K = map(int, raw_input().split())
+    numbers = map(int, raw_input().split())
+    numbers.sort()
+    print pairs(numbers, K)
