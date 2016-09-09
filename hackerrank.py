@@ -88,3 +88,49 @@ if __name__ == '__main__':
     numbers = map(int, raw_input().split())
     numbers.sort()
     print pairs(numbers, K)
+
+# https://www.hackerrank.com/challenges/connected-cell-in-a-grid
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def region_sum(i, j):
+    sum = 0
+    if board[i][j]:
+        sum = 1
+        board[i][j] = 0
+        if j<m-1:
+            # right cell
+            sum += region_sum(i,j+1)
+            # right diagonal cells
+            if i>0:
+                sum += region_sum(i-1,j+1)
+            if i<n-1:
+                sum += region_sum(i+1,j+1)
+        if j>0:
+            # left cell
+            sum += region_sum(i,j-1)
+            # left diagonal cells
+            if i>0:
+                sum += region_sum(i-1,j-1)
+            if i<n-1:
+                sum += region_sum(i+1,j-1)
+        # top cell
+        if i>0:
+            sum += region_sum(i-1,j)
+        # bottom cell
+        if i<n-1:
+            sum += region_sum(i+1,j)
+    return sum
+
+if __name__ == '__main__':
+    n = input()
+    m = input()
+    board = []
+    max_sum = 0
+    for i in xrange(n):
+        board.append(map(int, raw_input().split()))
+    for i in xrange(n):
+        for j in xrange(m):
+            if board[i][j]:
+                rg_sum = region_sum(i,j)
+                max_sum = max(max_sum, rg_sum)
+    print max_sum
+
