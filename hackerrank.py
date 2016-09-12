@@ -134,3 +134,30 @@ if __name__ == '__main__':
                 max_sum = max(max_sum, rg_sum)
     print max_sum
 
+# https://www.hackerrank.com/challenges/equal-stacks
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n1, n2, n3 = map(int, raw_input().split())
+s1 = map(int, raw_input().split())
+s2 = map(int, raw_input().split())
+s3 = map(int, raw_input().split())
+s1.reverse()
+s2.reverse()
+s3.reverse()
+s1_sum = s1[0]
+s2_sum = s2[0]
+s3_sum = s3[0]
+res = s1_sum if s1_sum == s2_sum == s3_sum else 0
+i = j = k = 1
+while i < n1 and j < n2 and k < n3:
+	s1_sum += s1[i]
+	i += 1
+	max_sum = max(s1_sum, s2_sum, s3_sum)
+	while j < n2 and s2_sum + s2[j] <= max_sum:
+		s2_sum += s2[j]
+		j += 1
+		while k < n3 and s3_sum + s3[k] <= max_sum:
+			s3_sum += s3[k]
+			k += 1
+	res = s1_sum if s1_sum == s2_sum == s3_sum else res
+print res
+
