@@ -161,3 +161,10 @@ while i < n1 and j < n2 and k < n3:
 	res = s1_sum if s1_sum == s2_sum == s3_sum else res
 print res
 
+# https://www.hackerrank.com/contests/w23/challenges/gears-of-war
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+q = input()
+if __name__ == '__main__':
+	for i in xrange(q):
+		n = input()
+		print 'Yes' if n%2 == 0 else 'No'
