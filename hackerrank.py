@@ -149,22 +149,63 @@ s3_sum = s3[0]
 res = s1_sum if s1_sum == s2_sum == s3_sum else 0
 i = j = k = 1
 while i < n1 and j < n2 and k < n3:
-	s1_sum += s1[i]
-	i += 1
-	max_sum = max(s1_sum, s2_sum, s3_sum)
-	while j < n2 and s2_sum + s2[j] <= max_sum:
-		s2_sum += s2[j]
-		j += 1
-		while k < n3 and s3_sum + s3[k] <= max_sum:
-			s3_sum += s3[k]
-			k += 1
-	res = s1_sum if s1_sum == s2_sum == s3_sum else res
+    s1_sum += s1[i]
+    i += 1
+    max_sum = max(s1_sum, s2_sum, s3_sum)
+    while j < n2 and s2_sum + s2[j] <= max_sum:
+        s2_sum += s2[j]
+        j += 1
+        while k < n3 and s3_sum + s3[k] <= max_sum:
+            s3_sum += s3[k]
+            k += 1
+    res = s1_sum if s1_sum == s2_sum == s3_sum else res
 print res
 
 # https://www.hackerrank.com/contests/w23/challenges/gears-of-war
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 q = input()
 if __name__ == '__main__':
-	for i in xrange(q):
-		n = input()
-		print 'Yes' if n%2 == 0 else 'No'
+    for i in xrange(q):
+        n = input()
+        print 'Yes' if n%2 == 0 else 'No'
+
+# https://www.hackerrank.com/contests/w23/challenges/lighthouse
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def get_circle_rad(ci, cj):
+    for r in xrange(1, n):
+        for offset_i in xrange(-r,r+1):
+            for offset_j in xrange(-r,r+1):
+                i = ci+offset_i
+                j = cj+offset_j
+                # if it's inside the euclidean space but it's out ot grid or is not a dot
+                if((offset_i**2+offset_j**2)<= r**2 and ((i<0 or j<0 or i>=n or j>=n) or N[i][j] != '.')):
+                    return r-1
+
+if __name__ == '__main__':
+    n = input()
+    N = []
+    max_rad = 0
+    for i in xrange(n):
+        N.append(raw_input())
+    for i in xrange(n):
+        for j in xrange(n):
+            max_rad = max(max_rad, get_circle_rad(i,j))
+    print max_rad
+
+# https://www.hackerrank.com/contests/w23/challenges/treasure-hunting
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def orto(a) :
+	b=[]
+	b.append(-a[1])
+	b.append(a[0])
+	return b
+
+if __name__ == '__main__':
+	x, y = map(int,raw_input().split())
+	a, b = map(int,raw_input().split())
+	a_, b_ = orto([a, b])
+	n  = float(a*y-x*b)/float(b_*a-a_*b)
+	k = float(x-n*a_) / float(a)
+	print k
+	print n
+
