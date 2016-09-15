@@ -209,3 +209,17 @@ if __name__ == '__main__':
 	print k
 	print n
 
+# https://www.hackerrank.com/contests/w23/challenges/commuting-strings
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def subpattern(s):
+	import re
+	for i in xrange(1,len(s)/2):
+		if len(s)%len(s[0:i]) == 0 and len(re.findall(s[0:i], s)) == len(s)/len(s[0:i]):
+			return (m/len(s[0:i])) % (10**9+7)
+	return m/len(s)
+if __name__ == '__main__':
+	s = raw_input()
+	m = input()
+	print subpattern(s)
+
+
