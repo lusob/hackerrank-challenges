@@ -195,32 +195,32 @@ if __name__ == '__main__':
 # https://www.hackerrank.com/contests/w23/challenges/treasure-hunting
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def orto(a) :
-	b=[]
-	b.append(-a[1])
-	b.append(a[0])
-	return b
+    b=[]
+    b.append(-a[1])
+    b.append(a[0])
+    return b
 
 if __name__ == '__main__':
-	x, y = map(int,raw_input().split())
-	a, b = map(int,raw_input().split())
-	a_, b_ = orto([a, b])
-	n  = float(a*y-x*b)/float(b_*a-a_*b)
-	k = float(x-n*a_) / float(a)
-	print k
-	print n
+    x, y = map(int,raw_input().split())
+    a, b = map(int,raw_input().split())
+    a_, b_ = orto([a, b])
+    n  = float(a*y-x*b)/float(b_*a-a_*b)
+    k = float(x-n*a_) / float(a)
+    print k
+    print n
 
 # https://www.hackerrank.com/contests/w23/challenges/commuting-strings
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 def subpattern(s):
-	import re
-	for i in xrange(1,len(s)/2):
-		if len(s)%len(s[0:i]) == 0 and len(re.findall(s[0:i], s)) == len(s)/len(s[0:i]):
-			return (m/len(s[0:i])) % (10**9+7)
-	return m/len(s)
+    import re
+    for i in xrange(1,len(s)/2):
+        if len(s)%len(s[0:i]) == 0 and len(re.findall(s[0:i], s)) == len(s)/len(s[0:i]):
+            return (m/len(s[0:i])) % (10**9+7)
+    return m/len(s)
 if __name__ == '__main__':
-	s = raw_input()
-	m = input()
-	print subpattern(s)
+    s = raw_input()
+    m = input()
+    print subpattern(s)
 
 # https://www.hackerrank.com/challenges/candies
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -265,3 +265,34 @@ if __name__=='__main__':
         return max(l, key=len)
 
     print len(my_longest_increasing_subsequence(ratings))
+
+# https://www.hackerrank.com/challenges/dynamic-programming-classics-the-longest-common-subsequence
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__=='__main__':
+    m, n = map(int, raw_input().split())
+    A = map(int, raw_input().split())
+    B = map(int, raw_input().split())
+    C = [[0]*(n+1) for j in range(m+1)]
+    def LCSLength(X, Y, m, n):
+        for i in xrange(m):
+            for j in xrange(n):
+                if X[i] == Y[j]:
+                    C[i][j] = C[i-1][j-1] + 1
+                else:
+                    C[i][j] = max(C[i][j-1], C[i-1][j])
+        return C[m-1][n-1]
+
+    def backtrack(C, X, Y, i, j):
+        if i == -1 or j == -1:
+            return ""
+        elif  X[i] == Y[j]:
+            return "%s %s" % (backtrack(C, X, Y, i-1, j-1), X[i])
+        else:
+            if C[i][j-1] > C[i-1][j]:
+                return backtrack(C, X, Y, i, j-1)
+            else:
+                return backtrack(C, X, Y, i-1, j)
+
+    LCSLength(A, B, m, n)
+    print backtrack(C, A, B, m-1, n-1)
+
