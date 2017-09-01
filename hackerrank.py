@@ -296,3 +296,20 @@ if __name__=='__main__':
     LCSLength(A, B, m, n)
     print backtrack(C, A, B, m-1, n-1)
 
+# https://www.hackerrank.com/challenges/two-characters
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def is_valid_t(s):
+    return all(i!=s[x+1] for x,i in enumerate(s[:-1]))
+
+if __name__=='__main__':
+    s_len = int(raw_input().strip())
+    s = raw_input().strip()
+    ss = set(s)
+    len_t = 0
+    for x,i in enumerate(ss):
+        for j in ss.difference(set([i])):
+            t = [k for k in s if k==i or k==j]
+            if is_valid_t(t):
+                len_t = max(len_t, len(t))
+    print len_t
+
