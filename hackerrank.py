@@ -313,3 +313,9 @@ if __name__=='__main__':
                 len_t = max(len_t, len(t))
     print len_t
 
+# https://www.hackerrank.com/challenges/mars-exploration
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__=='__main__':
+    S = raw_input().strip()
+    print sum([int(S[x]!='S') + int(S[x+1]!='O') + int(S[x+2]!='S') for x in range(0, len(S), 3)])
+
