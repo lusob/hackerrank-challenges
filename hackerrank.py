@@ -334,3 +334,30 @@ if __name__=='__main__':
                 c = t.pop(0)
         print 'NO' if len(t) else 'YES'
 
+# https://www.hackerrank.com/challenges/weighted-uniform-string
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from collections import Counter
+if __name__=='__main__':
+    s = raw_input().strip()
+    n = int(raw_input().strip())
+    kk  = Counter(s)
+    d={}
+    aux = 1
+    for ix,i in enumerate(s):
+        if ix<len(s)-1 and s[ix+1] == i:
+            aux += 1
+        else:
+            if i not in d.keys() or d[i]<aux:
+                d[i] = aux
+            aux = 1
+
+    def has_weight(x):
+        m = dict(map(lambda (k,v):(ord(k)-ord('a')+1,v), d.iteritems()))
+        for k,v in m.iteritems():
+            if x%k == 0 and x/k <= v:
+                return True
+        return False
+
+    for a0 in xrange(n):
+        x = int(raw_input().strip())
+        print  'Yes' if has_weight(x) else 'No'
