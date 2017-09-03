@@ -319,3 +319,18 @@ if __name__=='__main__':
     S = raw_input().strip()
     print sum([int(S[x]!='S') + int(S[x+1]!='O') + int(S[x+2]!='S') for x in range(0, len(S), 3)])
 
+# https://www.hackerrank.com/challenges/hackerrank-in-a-string
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__=='__main__':
+    q = int(raw_input().strip())
+    for a0 in xrange(q):
+        s = raw_input().strip()
+        t = list('hackerrank')
+        c = t.pop(0)
+        for i in s:
+            if len(t) == 0:
+                break
+            if i == c:
+                c = t.pop(0)
+        print 'NO' if len(t) else 'YES'
+
