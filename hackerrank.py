@@ -364,7 +364,6 @@ if __name__=='__main__':
 
 # https://www.hackerrank.com/challenges/separate-the-numbers
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 if __name__=='__main__':
     def is_beutiful_string(s):
         if s[0] == '0':
