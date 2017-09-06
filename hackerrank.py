@@ -361,3 +361,37 @@ if __name__=='__main__':
     for a0 in xrange(n):
         x = int(raw_input().strip())
         print  'Yes' if has_weight(x) else 'No'
+
+# https://www.hackerrank.com/challenges/separate-the-numbers
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if __name__=='__main__':
+    def is_beutiful_string(s):
+        if s[0] == '0':
+            return None
+        else:
+            first = None
+            for i in range(1,len(s)/2+1):
+                first = s[:i]
+                k = first
+                j = 0
+                while j < len(s)-len(str(k)):
+                    n_chars = len(str(k))
+                    p = s[j:j+n_chars]
+                    k = int(p) + 1
+                    if j == 0:
+                        first = s[:n_chars]
+                    n = s[j+n_chars:j+n_chars+len(str(k))]
+                    if k != int(n):
+                        first = None
+                        break
+                    j += n_chars
+                if first != None:
+                    return first
+            return first
+
+    q = int(raw_input().strip())
+    for a0 in xrange(q):
+        s = raw_input().strip()
+        r = is_beutiful_string(s)
+        print 'YES ' + r  if r else 'NO'
