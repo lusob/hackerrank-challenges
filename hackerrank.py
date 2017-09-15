@@ -418,3 +418,17 @@ for ix, i in enumerate(s):
     if sea_level_offset == 0 and s[ix]=='U':
         valleys += 1
 print valleys
+
+# https://www.hackerrank.com/challenges/electronics-shop
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def getMoneySpent(keyboards, drives, s):
+    l = [k+d if k+d <= s else 0 for k in keyboards if k<s for d in drives if d<s]
+    return max(l) if len(l) else -1
+
+s,n,m = raw_input().strip().split(' ')
+s,n,m = [int(s),int(n),int(m)]
+keyboards = map(int, raw_input().strip().split(' '))
+drives = map(int, raw_input().strip().split(' '))
+#  The maximum amount of money she can spend on a keyboard and USB drive, or -1 if she can't purchase both items
+moneySpent = getMoneySpent(keyboards, drives, s)
+print(moneySpent)
