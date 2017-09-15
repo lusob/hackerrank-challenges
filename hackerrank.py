@@ -432,3 +432,31 @@ drives = map(int, raw_input().strip().split(' '))
 #  The maximum amount of money she can spend on a keyboard and USB drive, or -1 if she can't purchase both items
 moneySpent = getMoneySpent(keyboards, drives, s)
 print(moneySpent)
+
+# https://www.hackerrank.com/challenges/magic-square-forming/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import sys
+diffs = []
+s = []
+for s_i in range(3):
+	s_t = [int(s_temp) for s_temp in raw_input().strip().split(' ')]
+	s+=s_t
+
+all_magic_squares= [
+	[8, 1, 6, 3, 5, 7, 4, 9, 2],
+	[6, 1, 8, 7, 5, 3, 2, 9, 4],
+	[4, 9, 2, 3, 5, 7, 8, 1, 6],
+	[2, 9, 4, 7, 5, 3, 6, 1, 8],
+	[8, 3, 4, 1, 5, 9, 6, 7, 2],
+	[4, 3, 8, 9, 5, 1, 2, 7, 6],
+	[6, 7, 2, 1, 5, 9, 8, 3, 4],
+	[2, 7, 6, 9, 5, 1, 4, 3, 8]]
+
+#compare s to each in all possible get number of differences for each to diffs
+for p in all_magic_squares:
+	cost = 0
+	for p_i, s_i in list(zip(p,s)):
+		if p_i != s_i:
+			cost += abs(p_i - s_i)
+	diffs.append(cost)
+print(min(diffs))
