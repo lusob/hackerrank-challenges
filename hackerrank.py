@@ -460,3 +460,11 @@ for p in all_magic_squares:
 			cost += abs(p_i - s_i)
 	diffs.append(cost)
 print(min(diffs))
+
+# https://www.hackerrank.com/challenges/picking-numbers
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from collections import Counter
+n = int(raw_input().strip())
+a = map(int,raw_input().strip().split(' '))
+cc = Counter(a)
+print max([cc[k-1]+cc[k] for k in cc.keys()])
