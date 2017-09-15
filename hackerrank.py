@@ -405,3 +405,16 @@ if __name__=='__main__':
 	p = int(raw_input().strip())
 	result = solve(n, p)
 	print(result)
+
+# https://www.hackerrank.com/challenges/counting-valleys
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n = input()
+s = raw_input()
+valleys = 0
+sea_level_offset = 0
+for ix, i in enumerate(s):
+    sea_level_offset += 1 if i == 'U' else -1
+    #if i == 'U' and s[ix+sea_level_offset:ix] == sea_level_offset*'D':
+    if sea_level_offset == 0 and s[ix]=='U':
+        valleys += 1
+print valleys
