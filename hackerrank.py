@@ -394,3 +394,14 @@ if __name__=='__main__':
         s = raw_input().strip()
         r = is_beutiful_string(s)
         print 'YES ' + r  if r else 'NO'
+
+
+# https://www.hackerrank.com/challenges/drawing-book
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if __name__=='__main__':
+	def solve(n, p):
+		return min(n/2-p/2, p/2)
+	n = int(raw_input().strip())
+	p = int(raw_input().strip())
+	result = solve(n, p)
+	print(result)
