@@ -468,3 +468,17 @@ n = int(raw_input().strip())
 a = map(int,raw_input().strip().split(' '))
 cc = Counter(a)
 print max([cc[k-1]+cc[k] for k in cc.keys()])
+
+# https://www.hackerrank.com/challenges/climbing-the-leaderboard
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n = int(raw_input().strip())
+scores = map(int,raw_input().strip().split(' '))
+m = int(raw_input().strip())
+alice = map(int,raw_input().strip().split(' '))
+leader_board = sorted(set(scores))
+ix = 0
+for current_score in alice:
+    while ix<len(leader_board) and current_score>=leader_board[ix]:
+        ix+=1
+    pos = max(1,len(leader_board)+1-ix)
+    print pos
