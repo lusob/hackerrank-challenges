@@ -482,3 +482,11 @@ for current_score in alice:
         ix+=1
     pos = max(1,len(leader_board)+1-ix)
     print pos
+
+# https://www.hackerrank.com/challenges/designer-pdf-viewer
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+h = map(int, raw_input().strip().split(' '))
+word = raw_input().strip()
+ord_a = ord('a')
+print len(word)*max([h[ord(c)-ord_a] for c in word])
+
