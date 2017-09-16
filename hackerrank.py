@@ -490,3 +490,11 @@ word = raw_input().strip()
 ord_a = ord('a')
 print len(word)*max([h[ord(c)-ord_a] for c in word])
 
+# https://www.hackerrank.com/challenges/beautiful-days-at-the-movies
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+i, j, k = map(int, raw_input().strip().split(' '))
+beautiful_days = 0
+for n in range(i,j):
+	if abs(n-int(str(n)[::-1])) % k == 0:
+		beautiful_days += 1
+print beautiful_days
