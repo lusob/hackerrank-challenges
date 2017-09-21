@@ -498,3 +498,16 @@ for n in range(i,j):
 	if abs(n-int(str(n)[::-1])) % k == 0:
 		beautiful_days += 1
 print beautiful_days
+
+# https://www.hackerrank.com/challenges/strange-advertising/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n = input()-1
+m = 5
+likes = 2
+total_likes = 2
+for i in range(n):
+	m = likes * 3
+	likes = m//2
+	total_likes += likes
+print total_likes
+
