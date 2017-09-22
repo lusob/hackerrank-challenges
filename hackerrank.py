@@ -540,3 +540,14 @@ n = input()
 p = map(int, raw_input().split())
 for x in range(1, n+1):
 	print p.index(p.index(x)+1)+1
+
+# https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited
+n,k = raw_input().strip().split(' ')
+n,k = [int(n),int(k)]
+c = map(int,raw_input().strip().split(' '))
+current_cloud = 0
+energy = 100
+while (energy ==100 or current_cloud != 0):
+	energy -= 1 if c[current_cloud] == 0 else 3
+	current_cloud = (current_cloud + k) % n
+print energy
