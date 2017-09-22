@@ -511,3 +511,14 @@ for i in range(n):
 	total_likes += likes
 print total_likes
 
+# https://www.hackerrank.com/challenges/save-the-prisoner
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def saveThePrisoner(n, m, s):
+	return (s-1+m-1) % n+1
+
+t = int(raw_input().strip())
+for a0 in xrange(t):
+	n, m, s = raw_input().strip().split(' ')
+	n, m, s = [int(n), int(m), int(s)]
+	result = saveThePrisoner(n, m, s)
+	print(result)
