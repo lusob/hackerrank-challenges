@@ -533,3 +533,10 @@ a_rot.rotate(k)
 for i in range(q):
 	qi = input()
 	print a_rot[qi]
+
+# https://www.hackerrank.com/challenges/permutation-equation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n = input()
+p = map(int, raw_input().split())
+for x in range(1, n+1):
+	print p.index(p.index(x)+1)+1
