@@ -542,6 +542,7 @@ for x in range(1, n+1):
 	print p.index(p.index(x)+1)+1
 
 # https://www.hackerrank.com/challenges/jumping-on-the-clouds-revisited
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 n,k = raw_input().strip().split(' ')
 n,k = [int(n),int(k)]
 c = map(int,raw_input().strip().split(' '))
