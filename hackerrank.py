@@ -522,3 +522,14 @@ for a0 in xrange(t):
 	n, m, s = [int(n), int(m), int(s)]
 	result = saveThePrisoner(n, m, s)
 	print(result)
+
+# https://www.hackerrank.com/challenges/circular-array-rotation
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from collections import deque
+n, k, q = map(int, raw_input().split())
+a = map(int, raw_input().split())
+a_rot = deque(a)
+a_rot.rotate(k)
+for i in range(q):
+	qi = input()
+	print a_rot[qi]
