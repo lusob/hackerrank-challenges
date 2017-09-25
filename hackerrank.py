@@ -552,3 +552,16 @@ while (energy ==100 or current_cloud != 0):
 	energy -= 1 if c[current_cloud] == 0 else 3
 	current_cloud = (current_cloud + k) % n
 print energy
+
+# https://www.hackerrank.com/challenges/append-and-delete
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import sys
+s = raw_input()
+t = raw_input()
+k = input()
+n = len(s)
+for i in range(k):
+	if s[:n] == t[:n] and len(t) - n == k-i or n == 0:
+		break
+	n -= 1
+print 'Yes' if len(t) - n <= k-i else 'No'
