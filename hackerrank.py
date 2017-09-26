@@ -565,3 +565,11 @@ for i in range(k):
 		break
 	n -= 1
 print 'Yes' if len(t) - n <= k-i else 'No'
+
+# https://www.hackerrank.com/challenges/repeated-string
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from collections import Counter
+s = raw_input().strip()
+n = long(raw_input().strip())
+n_a = Counter(s)['a']
+print  n_a * (n // len(s)) + Counter(s[:n % len(s)])['a']
