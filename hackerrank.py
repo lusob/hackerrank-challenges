@@ -587,3 +587,12 @@ while pos < n-1:
         pos += 1
     jumps += 1
 print jumps
+
+# https://www.hackerrank.com/challenges/equality-in-a-array
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from collections import Counter
+n = input()
+a = raw_input().split()
+
+c = Counter(a)
+print  n - int(max(c.values()))
