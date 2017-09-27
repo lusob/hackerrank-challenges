@@ -573,3 +573,17 @@ s = raw_input().strip()
 n = long(raw_input().strip())
 n_a = Counter(s)['a']
 print  n_a * (n // len(s)) + Counter(s[:n % len(s)])['a']
+
+# https://www.hackerrank.com/challenges/jumping-on-the-clouds
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n = int(raw_input().strip())
+c = map(int,raw_input().strip().split(' '))
+pos = 0
+jumps = 0
+while pos < n-1:
+    if pos < n-2 and c[pos+2] == 0:
+        pos += 2
+    else:
+        pos += 1
+    jumps += 1
+print jumps
