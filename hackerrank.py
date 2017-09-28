@@ -596,3 +596,17 @@ a = raw_input().split()
 
 c = Counter(a)
 print  n - int(max(c.values()))
+
+# https://www.hackerrank.com/challenges/minimum-distances
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n = int(raw_input().strip())
+A = map(int,raw_input().strip().split(' '))
+final_i = 0
+final_j = len(A)+1
+for i in range(len(A)-1):
+    for j in range(i+1,len(A)):
+        if A[i] == A[j] and j-i < final_j - final_i:
+            final_i = i
+            final_j = j
+print -1 if final_j - final_i == len(A) + 1 else final_j - final_i
+
