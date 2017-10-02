@@ -610,3 +610,16 @@ for i in range(len(A)-1):
             final_j = j
 print -1 if final_j - final_i == len(A) + 1 else final_j - final_i
 
+# https://www.hackerrank.com/challenges/lisa-workbook
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n, k = map(int, raw_input().split())
+t = map(int, raw_input().split())
+beatiful_ones = 0
+current_page = 0
+for ti in t:
+    for page in range(ti//k + (1 if ti%k>0 else 0)):
+        current_page += 1
+        if current_page in range(page*k+1, min(ti+1, page*k+k+1)):
+            beatiful_ones += 1
+print beatiful_ones
+
