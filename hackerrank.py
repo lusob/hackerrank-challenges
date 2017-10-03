@@ -623,3 +623,9 @@ for ti in t:
             beatiful_ones += 1
 print beatiful_ones
 
+# https://www.hackerrank.com/challenges/flatland-space-stations
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n,m = raw_input().strip().split(' ')
+n,m = [int(n),int(m)]
+c = sorted(map(int,raw_input().strip().split(' ')))
+print max([(c[i+1]-c[i])//2 for i in range(m-1)] + [c[0], n-1-c[-1]])
