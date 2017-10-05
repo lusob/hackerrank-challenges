@@ -646,3 +646,12 @@ def get_min_loaves():
     return t
 
 print get_min_loaves()
+
+# https://www.hackerrank.com/challenges/beautiful-triplets
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+n, d = map(int,raw_input().strip().split(' '))
+a = map(int,raw_input().strip().split(' '))
+t = 0
+for i in range(len(a)):
+    t += 1 if a[i]-d in a[:i] and a[i]+d in a[i:] else 0
+print t
