@@ -629,3 +629,20 @@ n,m = raw_input().strip().split(' ')
 n,m = [int(n),int(m)]
 c = sorted(map(int,raw_input().strip().split(' ')))
 print max([(c[i+1]-c[i])//2 for i in range(m-1)] + [c[0], n-1-c[-1]])
+
+# https://www.hackerrank.com/challenges/fair-rations
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+N = int(raw_input().strip())
+B = map(int,raw_input().strip().split(' '))
+def get_min_loaves():
+    t = 0
+    for i in range(N-1):
+        if B[i]%2!=0:
+            B[i]+=1
+            B[i+1]+=1
+            t += 2
+    if B[-1]%2!=0:
+        return 'NO'
+    return t
+
+print get_min_loaves()
