@@ -655,3 +655,12 @@ t = 0
 for i in range(len(a)):
     t += 1 if a[i]-d in a[:i] and a[i]+d in a[i:] else 0
 print t
+
+# https://www.hackerrank.com/challenges/strange-code
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+t = input()
+x = 3
+while t > x:
+    t = t-x
+    x *= 2
+print x-t+1
