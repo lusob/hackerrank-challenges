@@ -664,3 +664,21 @@ while t > x:
     t = t-x
     x *= 2
 print x-t+1
+
+# https://www.hackerrank.com/challenges/non-divisible-subset
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+from collections import Counter
+n, k = map(int, raw_input().split())
+S = map(int, raw_input().split())
+cc = dict(enumerate([0] * k))
+for i in S:
+    cc[i%k] += 1
+
+t = min(cc[0], 1)
+for i in range(1, k//2+1):
+    if i != k - i:
+        t += max(cc[i], cc[k-i])
+if k % 2 == 0:
+    t += 1
+print t
+
