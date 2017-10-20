@@ -682,3 +682,20 @@ if k % 2 == 0:
     t += 1
 print t
 
+# https://www.hackerrank.com/challenges/reduced-string
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def super_reduced_string(s):
+    s = list(s)
+    i = 0
+    while i < len(s)-1:
+        if (s[i] == s[i+1]):
+            del(s[i])
+            del(s[i])
+            i = 0
+        else:
+            i+=1
+    return s
+s = raw_input().strip()
+result = super_reduced_string(s)
+print(''.join(result) if len(result) and len(result)!=len(s) else 'Empty String')
+
