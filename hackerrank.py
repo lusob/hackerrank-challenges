@@ -699,3 +699,15 @@ s = raw_input().strip()
 result = super_reduced_string(s)
 print(''.join(result) if len(result) and len(result)!=len(s) else 'Empty String')
 
+# https://www.hackerrank.com/challenges/string-construction
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def stringConstruction(s):
+    return len(set(s))
+
+if __name__ == "__main__":
+    q = int(raw_input().strip())
+    for a0 in xrange(q):
+        s = raw_input().strip()
+        result = stringConstruction(s)
+        print result
+
