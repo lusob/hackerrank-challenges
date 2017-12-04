@@ -711,3 +711,22 @@ if __name__ == "__main__":
         result = stringConstruction(s)
         print result
 
+# https://www.hackerrank.com/challenges/organizing-containers-of-balls/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+q = int(raw_input().strip())
+for a0 in xrange(q):
+    n = int(raw_input().strip())
+    M = []
+    total_balls_counter = []
+    balls_type_counter = None
+    for M_i in xrange(n):
+        M_temp = map(int,raw_input().strip().split(' '))
+        M.append(M_temp)
+        if balls_type_counter == None:
+            balls_type_counter = [0] * len(M_temp)
+        total_balls_counter.append(sum(M_temp))
+        for x, t in enumerate(M_temp):
+            balls_type_counter[x] += t
+    print 'Possible' if sorted(balls_type_counter) == sorted(total_balls_counter) else 'Impossible'
+
+
