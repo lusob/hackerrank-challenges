@@ -729,4 +729,55 @@ for a0 in xrange(q):
             balls_type_counter[x] += t
     print 'Possible' if sorted(balls_type_counter) == sorted(total_balls_counter) else 'Impossible'
 
+# https://www.hackerrank.com/challenges/matrix-rotation-algo/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+rows, cols, rotations = map(int, raw_input().split())
+num_layers = int(min(rows, cols)/2)
+layers = [[] for x in range(num_layers)]
+matrix = []
+for row in range(rows):
+    matrix.append(map(int, raw_input().split()))
 
+rows -= 1
+cols -= 1
+
+for current_layer in range(num_layers):
+    i = j = current_layer
+    while i < rows-current_layer:
+        layers[current_layer].append(matrix[i][j])
+        i += 1
+    while j < cols-current_layer:
+        layers[current_layer].append(matrix[i][j])
+        j += 1
+    while i > current_layer:
+        layers[current_layer].append(matrix[i][j])
+        i -= 1
+    while j > current_layer:
+        layers[current_layer].append(matrix[i][j])
+        j -= 1
+
+new_layers = []
+for layer in layers:
+    rots = rotations%len(layer)
+    new_layers.append(list(layer[-rots:] + layer[:-rots]))
+
+for current_layer in range(num_layers):
+    i = j = current_layer
+    while i < rows-current_layer:
+        matrix[i][j] = new_layers[current_layer].pop(0)
+        i += 1
+    while j < cols-current_layer:
+        matrix[i][j] = new_layers[current_layer].pop(0)
+        j += 1
+    while i > current_layer:
+        matrix[i][j] = new_layers[current_layer].pop(0)
+        i -= 1
+    while j > current_layer:
+        matrix[i][j] = new_layers[current_layer].pop(0)
+        j -= 1
+
+for row in range(rows+1):
+    print ' '.join(map(str, [matrix[row][col] for col in range(cols+1)]))
+
+# https://www.hackerrank.com/challenges/the-grid-search/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
