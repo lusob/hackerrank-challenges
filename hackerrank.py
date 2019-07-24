@@ -779,5 +779,37 @@ for current_layer in range(num_layers):
 for row in range(rows+1):
     print ' '.join(map(str, [matrix[row][col] for col in range(cols+1)]))
 
-# https://www.hackerrank.com/challenges/the-grid-search/problem
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# https://www.hackerrank.com/challenges/crush/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def arrayManipulation(n, queries):
+    a = [0]*(n+1)
+    for i in range(len(queries)):
+        l, r, v = queries[i]
+        a[l-1] += v
+        a[r] -= v
+    max = x = 0
+    for i in a:
+        x=x+i;
+        if(max<x): max=x;
+    return max
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    nm = input().split()
+    n = int(nm[0])
+    m = int(nm[1])
+    queries = []
+    for _ in range(m):
+        queries.append(list(map(int, input().rstrip().split())))
+    result = arrayManipulation(n, queries)
+    fptr.write(str(result) + '\n')
+    fptr.close()
+
