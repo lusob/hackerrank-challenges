@@ -812,6 +812,7 @@ if __name__ == '__main__':
     result = arrayManipulation(n, queries)
     fptr.write(str(result) + '\n')
     fptr.close()
+
 # https://www.hackerrank.com/challenges/ctci-making-anagrams/problem
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #!/bin/python3
