@@ -812,4 +812,41 @@ if __name__ == '__main__':
     result = arrayManipulation(n, queries)
     fptr.write(str(result) + '\n')
     fptr.close()
+# https://www.hackerrank.com/challenges/ctci-making-anagrams/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#!/bin/python3
 
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the makeAnagram function below.
+def makeAnagram(a, b):
+    sa = sorted(a)
+    sb = sorted(b)
+    deletes = 0
+    i,j = 0, 0
+    lsa= len(sa)
+    lsb= len(sb)
+    while i<lsa and j<lsb:
+        if sa[i] < sb[j]:
+            i += 1
+            deletes +=1
+        elif sa[i] > sb[j]:
+            j += 1
+            deletes +=1
+        else:
+            i += 1
+            j += 1
+    deletes += lsa-i + lsb-j
+    return deletes
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    a = input()
+    b = input()
+    res = makeAnagram(a, b)
+    fptr.write(str(res) + '\n')
+    fptr.close()
