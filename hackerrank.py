@@ -851,3 +851,43 @@ if __name__ == '__main__':
     res = makeAnagram(a, b)
     fptr.write(str(res) + '\n')
     fptr.close()
+
+# https://www.hackerrank.com/challenges/minimum-swaps-2/
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def minimumSwaps(arr):
+    i = 0
+    swaps = 0
+    items_as_dict = dict(zip(arr,range(0,len(arr))))
+    while i < len(arr):
+        if arr[i] != i+1:
+            #pos_val_i = arr.index(i+1)
+            pos_val_i = items_as_dict[i+1]
+            items_as_dict[arr[pos_val_i]] = i
+            items_as_dict[arr[i]] = pos_val_i
+
+            arr[pos_val_i], arr[i] = arr[i], i+1
+            swaps += 1
+        i += 1
+    return swaps
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    res = minimumSwaps(arr)
+
+    fptr.write(str(res) + '\n')
+
+    fptr.close()
