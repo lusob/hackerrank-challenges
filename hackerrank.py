@@ -887,8 +887,8 @@ if __name__ == '__main__':
     fptr.write(str(res) + '\n')
     fptr.close()
 
-# https://www.hackerrank.com/challenges/special-palindrome-again/problem
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# https://www.hackerrank.com/challenges/new-year-chaos/problem
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #!/bin/python3
 
 import math
@@ -897,25 +897,38 @@ import random
 import re
 import sys
 
-# Complete the substrCount function below.
-def substrCount(n, s):
-    strs = list(s)
-    while i < n:
-        j = i
-        while s[i]==s[i+1]:
-            j+=1
-            strs.append(s[i:j])
-        while i < j:
-            i+=1
-            strs.append(s[j+1:j+1])
+# Complete the minimumBribes function below.
+def minimumBribes(q):
+    bribes = 0
+    brives_per_person = 0
+    is_sorted = False
+    while not is_sorted:
+        is_sorted = True
+        latest_briver = -1
+        for i in range(len(q)-1):
+            if q[i] > q[i+1]:
+                bribes += 1
+                if latest_briver == q[i]:
+                    brives_per_person += 1
+                else:
+                    latest_briver = q[i]
+                    brives_per_person = 1
+                if brives_per_person > 2:
+                    return 'Too chaotic'
+                q[i], q[i+1] = q[i+1], q[i]
+                is_sorted = False
+            else:
+                brives_per_person = 0
+    return bribes
 
-
-        i+=1
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    n = int(input())
-    s = input()
-    result = substrCount(n, s)
-    fptr.write(str(result) + '\n')
-    fptr.close()
+    t = int(input())
+
+    for t_itr in range(t):
+        n = int(input())
+
+        q = list(map(int, input().rstrip().split()))
+
+        print(minimumBribes(q))
+
