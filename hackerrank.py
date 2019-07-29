@@ -901,13 +901,16 @@ import sys
 def substrCount(n, s):
     strs = list(s)
     while i < n:
-        j = 0
-
+        j = i
         while s[i]==s[i+1]:
             j+=1
-        if s[i:i+j] == s[]
-        i+=1
+            strs.append(s[i:j])
+        while i < j:
+            i+=1
+            strs.append(s[j+1:j+1])
 
+
+        i+=1
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
