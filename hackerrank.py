@@ -899,8 +899,14 @@ import sys
 
 # Complete the substrCount function below.
 def substrCount(n, s):
+    strs = list(s)
     while i < n:
-        while s[i]!=s[i+1]
+        j = 0
+
+        while s[i]==s[i+1]:
+            j+=1
+        if s[i:i+j] == s[]
+        i+=1
 
 
 if __name__ == '__main__':
